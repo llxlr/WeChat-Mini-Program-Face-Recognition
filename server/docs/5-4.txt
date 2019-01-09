@@ -1,0 +1,3 @@
+人脸截取功能封装
+
+参考：static/images/exp/g1.png ~ g4.png

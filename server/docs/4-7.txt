@@ -1,0 +1,17 @@
+人脸识别示例接口
+
+{
+    1:{
+        'cate':1,
+        'name':'人脸检测示例',
+        'unknown_image':[xxx],
+        'known_image':[xxx],
+    },
+    2:{
+        'cate':2,
+        'name':'人脸勾勒示例',
+        'unknown_image':[xxx],
+        'known_image':[xxx],
+    },
+    ...
+}

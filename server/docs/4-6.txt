@@ -1,0 +1,6 @@
+小程序导航菜单信息对接
+
+常见错误
+<navigator/> should have url attribute when using navigateTo, redirectTo or switchTab
+
+url没有指定

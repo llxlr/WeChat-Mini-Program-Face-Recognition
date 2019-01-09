@@ -1,0 +1,3 @@
+人脸化妆功能封装
+
+参考：static/images/exp/g_makeup.png

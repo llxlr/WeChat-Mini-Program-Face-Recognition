@@ -1,0 +1,40 @@
+<view class="page">
+    <view class='weui-article'>
+        <view>
+            <view class="page__title__exp" wx:if="{{ uuid }}">原始图像</view>
+            <view class="page__title__exp" wx:else>原始图像示例</view>
+            <image class="image" src='{{ data.unknown_image[0] }}' mode='widthFix'></image>
+        </view>
+        <view wx:if="{{ data.cate != 3 }}">
+            <view class="page__title__exp">{{ data.name }}</view>
+            <image class="image" src='{{ data.known_image[0] }}' mode='widthFix'></image>
+        </view>
+        <view wx:else>
+            <view class="page__title__exp">{{ data.name }}</view>
+            <view class="weui-grids">
+                <view wx:for="{{ data.known_image }}" wx:for-item="val" wx:key="FaceItem" class="weui-grid grid__exp" hover-class='weui-grid_active'>
+                    <image class='weui-grid__icon weui-grid__exp' src='{{ val }}'></image>
+                </view>
+            </view>
+        </view>
+        <view>
+            <progress percent='{{ pg }}' show-info />
+        </view>
+        <view class="page-body-info">
+            <block wx:if="{{img_src}}">
+                <image src='{{img_src}}' class='image' mode='aspectFit'></image>
+            </block>
+            <block wx:else>
+                <view bindtap='chooseImage' class='image-plus image-plus-nb'>
+                    <view class='image-plus-horizontal'></view>
+                    <!--画一个水平线-->
+                    <view class='image-plus-vertical'></view>
+                    <!--画一个垂直线-->
+                </view>
+                <view class='image-plus-text'>上传图片进行识别</view>
+            </block>
+        </view>
+    </view>
+</view>
+
+<include src="../common/foot.wxml" />

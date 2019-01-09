@@ -1,0 +1,9 @@
+人脸68个特征点检测功能封装
+
+参考：static/images/exp/face_68_feature.png
+
+怎么实现：
+
+1.图像处理工具：opencv
+2.机器学习库：dlib
+3.68个特征点预测模型：http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2

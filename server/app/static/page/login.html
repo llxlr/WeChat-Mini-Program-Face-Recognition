@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>登录到人脸管理系统</title>
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+<form class="form-signin" id="form-data">
+    <img class="mb-4" src="../images/wxcode.jpg" alt="" width="200" height="200">
+    <h1 class="h3 mb-3 font-weight-normal">请登录</h1>
+    <label for="input_name" class="sr-only">账号名称：</label>
+    <input type="text"
+           id="input_name"
+           class="form-control"
+           placeholder="请输入账号名称！" required autofocus>
+    <p class="text-danger" id="error_name"></p>
+    <label for="input_pwd" class="sr-only">账号密码：</label>
+    <input type="password"
+           id="input_pwd"
+           class="form-control"
+           placeholder="请输入账号密码！" required>
+    <p class="text-danger" id="error_pwd"></p>
+    <a href="javascript:void(0)"
+       class="btn btn-lg btn-primary btn-block"
+       id="btn-sub">登录</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018 张金龙</p>
+</form>
+</body>
+</html>

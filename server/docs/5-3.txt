@@ -1,0 +1,3 @@
+人脸勾勒功能封装
+
+参考：static/images/exp/g_sense.png

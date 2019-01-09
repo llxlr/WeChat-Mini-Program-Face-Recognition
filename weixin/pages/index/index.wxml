@@ -1,0 +1,13 @@
+<view class='container'>
+    <view>
+        <!--容器视图-->
+        <view class='header'>
+            <image src='http://127.0.0.1:8003/static/images/logo.png'></image>
+        </view>
+        <view class="content">
+            <view>【人脸识别小助手】申请获取以下权限</view>
+            <text>获取您的公开信息（昵称、头像等）</text>
+        </view>
+        <button open-type='getUserInfo' lang='zh_CN' bindgetuserinfo='bindGetUserInfo' class='btn-login' type='primary'>授权登录</button>
+    </view>
+</view>
