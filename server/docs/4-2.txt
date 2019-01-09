@@ -1,7 +1,0 @@
-UA访问跟踪
-
-UA -> user agent -> 用户代理
-
-常见错误
-TypeError: Object of type HTTPHeaders is not JSON serializable
-这个HTTPHeaders对象不能进行json序列化

@@ -1,6 +1,0 @@
-集成mongodb数据库
-
-windows命令
-
-net start mongodb 启动mongodb服务
-mongo.exe 连接到mongodb
