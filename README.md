@@ -7,3 +7,4 @@ git clone https://github.com/jamesyangget/WeChat-Mini-Program-face-recognition.g
 ``` bash
 pip install -r requestsment.txt
 ``` 
+3. 详情见[项目Wiki](https://github.com/jamesyangget/WeChat-Mini-Program-face-recognition/wiki)
