@@ -1,6 +1,6 @@
 face-recognition==1.2.3
 opencv-python==3.4.4.19
-Pillow==5.3.0
+Pillow==6.2.0
 pymongo==3.7.2
 tornado==5.1.1
 Werkzeug==0.15.3
