@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.2",
-	"appid": "wxf7ac2a8c82e550da",
-	"projectname": "james_face_recognition",
+	"appid": "",
+	"projectname": "",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
