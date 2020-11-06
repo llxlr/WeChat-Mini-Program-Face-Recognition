@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">人脸管理</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-outline-secondary">列表</button>
+        </div>
+    </div>
+</div>
+<h5>人脸管理[查看]</h5>
+<div class="row">
+    <div class="col-md-12 table-responsive">
+        <table class="table table-sm table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 10%;" class="text-right">参数</th>
+                <th style="width: 90%;" class="text-left">内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--
+            unknown_image=imgs,
+    known_image=list(
+        map(
+            lambda v: self.site_url + "/static/uploads/" + v,
+            known_image
+        )
+    ),
+    name=name,
+    cate=handler_type,
+    createdAt=datetime.datetime.now(),
+    updatedAt=datetime.datetime.now(),
+    ip=self.request.remote_ip,
+    addr=ip2addr(self.request.remote_ip)['region'].decode('utf-8'),
+    headers=dict(self.request.headers)
+            -->
+            <tr>
+                <td class="text-primary text-right">状态</td>
+                <td class="text-left">
+                    {% if data['face']['status'] == 0 %}
+                    <span class="text-warning">待审核</span>
+                    {% else %}
+                    <span class="text-success">已审核</span>
+                    {% end %}
+                </td>
+            </tr>
+            {% if data['face']['status'] == 0 %}
+            <tr>
+                <td class="text-primary text-right">操作</td>
+                <td class="text-left">
+                    <a class="text-success"
+                       href="javascript:void(0)"
+                       onclick="if(confirm(`确定审核通过吗？`)){location.href=`/admin/face/status/?_id={{ str(data['face']['_id']) }}`}"
+                    >[审核通过]</a>
+                </td>
+            </tr>
+            {% end %}
+            <tr>
+                <td class="text-primary text-right">编号</td>
+                <td class="text-left">{{ str(data['face']['_id']) }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">分类</td>
+                <td class="text-left">{{ data['face']['name'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">创建时间</td>
+                <td class="text-left">{{ data['face']['createdAt'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">访问IP</td>
+                <td class="text-left">{{ data['face']['ip'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">访问地址</td>
+                <td class="text-left">{{ data['face']['addr'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">头信息</td>
+                <td class="text-left">
+                    <table class="table table-sm table-bordered">
+                        {% for k,v in data['face']['headers'].items() %}
+                        <tr>
+                            <td style="width: 10%;" class="text-danger text-right">
+                                {{ k }}
+                            </td>
+                            <td class="text-success text-left">
+                                {{ v }}
+                            </td>
+                        </tr>
+                        {% end %}
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">未知图片</td>
+                <td class="text-left">
+                    {% for v in data['face']['unknown_image'] %}
+                    <img data-src="{{ v }}" style="width: 300px;" class="lazyload blur-up">
+                    {% end %}
+                </td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">已知图片</td>
+                <td class="text-left">
+                    {% for v in data['face']['known_image'] %}
+                    <img data-src="{{ v }}" style="width: 300px;" class="lazyload blur-up">
+                    {% end %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% end %}
