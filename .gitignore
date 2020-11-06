@@ -107,3 +107,4 @@ venv.bak/
 server/.idea/
 server/docs/
 weixin/project.config.json
+shape_predictor_68_face_landmarks.dat
