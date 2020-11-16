@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">账号管理</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <a href="/admin/account/" class="btn btn-sm btn-outline-secondary">列表</a>
+            <a href="/admin/account/add/" class="btn btn-sm btn-outline-secondary">添加</a>
+        </div>
+    </div>
+</div>
+<h5>账号管理[添加]</h5>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form id="form-data">
+                    <div class="form-group">
+                        <label for="input_name">账号名称：</label>
+                        {% raw xsrf_form_html() %}
+                        <input class="form-control"
+                               id="input_name"
+                               type="text"
+                               name="name">
+                        <p class="text-danger" id="error_name"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_pwd">账号密码：</label>
+                        <input class="form-control"
+                               id="input_pwd"
+                               type="password"
+                               name="pwd">
+                        <p class="text-danger" id="error_pwd"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_repwd">确认密码：</label>
+                        <input class="form-control"
+                               id="input_repwd"
+                               type="password"
+                               name="repwd">
+                        <p class="text-danger" id="error_repwd"></p>
+                    </div>
+                    <a id="btn-sub" href="javascript:void(0)" class="btn btn-primary">添加</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
+
+{% block foot %}
+<script src="{{ static_url('js/request.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        request(
+            '/admin/account/add/',
+            ['name', 'pwd', 'repwd'],
+            '/admin/account/'
+        )
+    });
+</script>
+{% end %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">系统面板</h1>
+</div>
+<h5>系统面板</h5>
+<div class="row">
+    <div class="col-md-3">
+        <div class="alert alert-info">总计授权次数：{{ data['loginlog_total'] }}</div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-primary">总计识别次数：{{ data['image_total'] }}</div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-warning">等待审核次数：{{ data['image_uncheck'] }}</div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-success">审核通过次数：{{ data['image_check'] }}</div>
+    </div>
+</div>
+{% end %}

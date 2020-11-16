@@ -1,0 +1,9 @@
+<nav>
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="{{ data['url'] }}?page=1">首页</a></li>
+        <li class="page-item"><a class="page-link" href="{{ data['url'] }}?page={{ data['prev_page'] }}">上一页</a></li>
+        <li class="page-item active"><a class="page-link" href="#">{{ data['page'] }}/{{ data['pagenum'] }}</a></li>
+        <li class="page-item"><a class="page-link" href="{{ data['url'] }}?page={{ data['next_page'] }}">下一页</a></li>
+        <li class="page-item"><a class="page-link" href="{{ data['url'] }}?page={{ data['pagenum'] }}">尾页</a></li>
+    </ul>
+</nav>

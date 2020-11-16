@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">授权日志</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-outline-secondary">列表</button>
+        </div>
+    </div>
+</div>
+<h5>授权日志[查看]</h5>
+<div class="row">
+    <div class="col-md-12 table-responsive">
+        <table class="table table-sm table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 10%;" class="text-right">参数</th>
+                <th style="width: 90%;" class="text-left">内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-primary text-right">编号</td>
+                <td class="text-left">{{ str(data['loginlog']['_id']) }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">昵称</td>
+                <td class="text-left">{{ data['loginlog']['nickName'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">头像</td>
+                <td class="text-left">
+                    <img data-src="{{ data['loginlog']['avatarUrl'] }}" class="lazyload blur-up">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">国家</td>
+                <td class="text-left">{{ data['loginlog']['country'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">省份</td>
+                <td class="text-left">{{ data['loginlog']['province'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">城市</td>
+                <td class="text-left">{{ data['loginlog']['city'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">性别</td>
+                <td class="text-left">
+                    {% if data['loginlog']['gender'] == 1 %}
+                    <span class="text-success">男</span>
+                    {% elif data['loginlog']['gender'] == 2 %}
+                    <span class="text-danger">女</span>
+                    {% else %}
+                    <span class="text-warning">未知</span>
+                    {% end %}
+                </td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">语言</td>
+                <td class="text-left">{{ data['loginlog']['language'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">授权时间</td>
+                <td class="text-left">{{ data['loginlog']['createdAt'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">访问IP</td>
+                <td class="text-left">{{ data['loginlog']['ip'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">访问地址</td>
+                <td class="text-left">{{ data['loginlog']['addr'] }}</td>
+            </tr>
+            <tr>
+                <td class="text-primary text-right">头信息</td>
+                <td class="text-left">
+                    <table class="table table-sm table-bordered">
+                        {% for k,v in data['loginlog']['headers'].items() %}
+                        <tr>
+                            <td style="width: 10%;" class="text-danger text-right">
+                                {{ k }}
+                            </td>
+                            <td class="text-success text-left">
+                                {{ v }}
+                            </td>
+                        </tr>
+                        {% end %}
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% end %}

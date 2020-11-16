@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">人脸管理</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <a href="/admin/face/" class="btn btn-sm btn-outline-secondary">列表</a>
+        </div>
+    </div>
+</div>
+<h5>人脸管理[列表]</h5>
+<div class="row">
+    <div class="col-md-12 table-responsive">
+        <!--
+        unknown_image
+        known_image
+        name=
+        cate=
+        createdAt=
+        updatedAt=
+        ip=
+        addr=
+        headers=
+        -->
+        <table class="table table-sm table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 10%;">编号</th>
+                <th style="width: 10%;">分类</th>
+                <th style="width: 20%;">IP</th>
+                <th style="width: 20%;">地址</th>
+                <th style="width: 20%;">创建时间</th>
+                <th style="width: 10%;">状态</th>
+                <th style="width: 10%;">管理</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if data['face'] %}
+            {% for v in data['face']['data'] %}
+            <tr>
+                <td>{{ str(v['_id']) }}</td>
+                <td>{{ v['name'] }}</td>
+                <td>{{ v['ip'] }}</td>
+                <td>{{ v['addr'] }}</td>
+                <td>{{ v['createdAt'] }}</td>
+                <td>
+                    <!--0待审核，1已审核-->
+                    {% if v['status'] == 0 %}
+                    <span class="text-warning">待审核</span>
+                    {% else %}
+                    <span class="text-success">已审核</span>
+                    {% end %}
+                </td>
+                <td>
+                    <a href="/admin/face/detail/?_id={{ str(v['_id'])}}" class="text-success">[查看]</a>
+                    {%
+                    set url='/admin/face/delete/?_id='+str(v['_id'])
+                    %}
+                    <a href="javascript:void(0)"
+                       onclick="if(confirm(`确认删除编号为{{ str(v['_id'])}}的记录吗？`)){location.href='{{ url }}'}"
+                       class="text-danger">[删除]</a>
+                </td>
+            </tr>
+            {% end %}
+            {% end %}
+            </tbody>
+        </table>
+        {% if data['face'] %}{% module page(data['face']) %}{% end %}
+    </div>
+</div>
+{% end %}
