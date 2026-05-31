@@ -6,16 +6,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>登录到人脸管理系统</title>
-    <link href="{{ static_url('dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ static_url('css/signin.css') }}" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', path='css/signin.css') }}" rel="stylesheet">
 </head>
 
 <body class="text-center">
 <form class="form-signin" id="form-data">
-    <img class="mb-4" src="{{ static_url('images/wxcode.jpg') }}" alt="" width="200" height="200">
+    <img class="mb-4" src="{{ url_for('static', path='images/wxcode.jpg') }}" alt="" width="200" height="200">
     <h1 class="h3 mb-3 font-weight-normal">请登录</h1>
     <label for="input_name" class="sr-only">账号名称：</label>
-    {% raw xsrf_form_html() %}
     <input type="text"
            name="name"
            id="input_name"
@@ -34,8 +33,8 @@
        id="btn-sub">登录</a>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018 张金龙</p>
 </form>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script src="{{ static_url('js/request.js') }}"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{ url_for('static', path='js/request.js') }}"></script>
 <script>
     $(document).ready(function () {
         request(

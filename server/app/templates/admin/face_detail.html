@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "admin/layout.html" %}
 
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -20,22 +20,6 @@
             </tr>
             </thead>
             <tbody>
-            <!--
-            unknown_image=imgs,
-    known_image=list(
-        map(
-            lambda v: self.site_url + "/static/uploads/" + v,
-            known_image
-        )
-    ),
-    name=name,
-    cate=handler_type,
-    createdAt=datetime.datetime.now(),
-    updatedAt=datetime.datetime.now(),
-    ip=self.request.remote_ip,
-    addr=ip2addr(self.request.remote_ip)['region'].decode('utf-8'),
-    headers=dict(self.request.headers)
-            -->
             <tr>
                 <td class="text-primary text-right">状态</td>
                 <td class="text-left">
@@ -43,7 +27,7 @@
                     <span class="text-warning">待审核</span>
                     {% else %}
                     <span class="text-success">已审核</span>
-                    {% end %}
+                    {% endif %}
                 </td>
             </tr>
             {% if data['face']['status'] == 0 %}
@@ -52,14 +36,14 @@
                 <td class="text-left">
                     <a class="text-success"
                        href="javascript:void(0)"
-                       onclick="if(confirm(`确定审核通过吗？`)){location.href=`/admin/face/status/?_id={{ str(data['face']['_id']) }}`}"
+                       onclick="if(confirm('确定审核通过吗？')){location.href='/admin/face/status/?_id={{ data['face']['_id'] }}'}"
                     >[审核通过]</a>
                 </td>
             </tr>
-            {% end %}
+            {% endif %}
             <tr>
                 <td class="text-primary text-right">编号</td>
-                <td class="text-left">{{ str(data['face']['_id']) }}</td>
+                <td class="text-left">{{ data['face']['_id'] }}</td>
             </tr>
             <tr>
                 <td class="text-primary text-right">分类</td>
@@ -81,7 +65,7 @@
                 <td class="text-primary text-right">头信息</td>
                 <td class="text-left">
                     <table class="table table-sm table-bordered">
-                        {% for k,v in data['face']['headers'].items() %}
+                        {% for k, v in data['face']['headers'].items() %}
                         <tr>
                             <td style="width: 10%;" class="text-danger text-right">
                                 {{ k }}
@@ -90,7 +74,7 @@
                                 {{ v }}
                             </td>
                         </tr>
-                        {% end %}
+                        {% endfor %}
                     </table>
                 </td>
             </tr>
@@ -99,7 +83,7 @@
                 <td class="text-left">
                     {% for v in data['face']['unknown_image'] %}
                     <img data-src="{{ v }}" style="width: 300px;" class="lazyload blur-up">
-                    {% end %}
+                    {% endfor %}
                 </td>
             </tr>
             <tr>
@@ -107,11 +91,11 @@
                 <td class="text-left">
                     {% for v in data['face']['known_image'] %}
                     <img data-src="{{ v }}" style="width: 300px;" class="lazyload blur-up">
-                    {% end %}
+                    {% endfor %}
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-{% end %}
+{% endblock %}

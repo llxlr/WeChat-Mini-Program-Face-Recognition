@@ -1,0 +1,38 @@
+[project]
+name = "wechat-mini-program-face-recognition"
+version = "0.2.0"
+description = "WeChat Mini Program Face Recognition - FastAPI Backend"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "llxlr", email = "i@xhlr.top"}
+]
+
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.23.0",
+    "pymongo>=3.7.2",
+    "opencv-python>=4.5.3",
+    "Pillow>=5.3.0",
+    "itsdangerous>=2.0.0",
+    "Werkzeug>=0.14.1",
+    "WTForms>=2.2.1",
+    "python-multipart>=0.0.6",
+    "jinja2>=3.0.0",
+    "aiofiles>=23.0.0",
+    "setuptools<70",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.2.4",
+]
+face = [
+    "face-recognition>=1.2.3",
+]
+
+[[tool.uv.index]]
+name = "bfsu"
+url = "https://mirrors.bfsu.edu.cn/pypi/web/simple"
+default = true

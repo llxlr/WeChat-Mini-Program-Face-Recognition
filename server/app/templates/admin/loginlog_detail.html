@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "admin/layout.html" %}
 
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -22,7 +22,7 @@
             <tbody>
             <tr>
                 <td class="text-primary text-right">编号</td>
-                <td class="text-left">{{ str(data['loginlog']['_id']) }}</td>
+                <td class="text-left">{{ data['loginlog']['_id'] }}</td>
             </tr>
             <tr>
                 <td class="text-primary text-right">昵称</td>
@@ -55,7 +55,7 @@
                     <span class="text-danger">女</span>
                     {% else %}
                     <span class="text-warning">未知</span>
-                    {% end %}
+                    {% endif %}
                 </td>
             </tr>
             <tr>
@@ -78,7 +78,7 @@
                 <td class="text-primary text-right">头信息</td>
                 <td class="text-left">
                     <table class="table table-sm table-bordered">
-                        {% for k,v in data['loginlog']['headers'].items() %}
+                        {% for k, v in data['loginlog']['headers'].items() %}
                         <tr>
                             <td style="width: 10%;" class="text-danger text-right">
                                 {{ k }}
@@ -87,7 +87,7 @@
                                 {{ v }}
                             </td>
                         </tr>
-                        {% end %}
+                        {% endfor %}
                     </table>
                 </td>
             </tr>
@@ -95,4 +95,4 @@
         </table>
     </div>
 </div>
-{% end %}
+{% endblock %}

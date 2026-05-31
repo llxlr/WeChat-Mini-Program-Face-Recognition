@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "admin/layout.html" %}
 
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -44,19 +44,19 @@
                     <span class="text-danger">女</span>
                     {% else %}
                     <span class="text-warning">未知</span>
-                    {% end %}
+                    {% endif %}
                 </td>
                 <td>{{ v['language'] }}</td>
                 <td>{{ v['createdAt'] }}</td>
                 <td>
-                    <a href="/admin/loginlog/detail/?_id={{ str(v['_id']) }}" class="text-success">[查看]</a>
+                    <a href="/admin/loginlog/detail/?_id={{ v['_id'] }}" class="text-success">[查看]</a>
                 </td>
             </tr>
-            {% end %}
-            {% end %}
+            {% endfor %}
+            {% endif %}
             </tbody>
         </table>
-        {% if data['loginlog'] %}{% module page(data['loginlog']) %}{% end %}
+        {% if data['loginlog'] %}{% with pagedata=data['loginlog'] %}{% include 'ui/page.html' %}{% endwith %}{% endif %}
     </div>
 </div>
-{% end %}
+{% endblock %}

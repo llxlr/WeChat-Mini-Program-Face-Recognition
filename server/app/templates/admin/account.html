@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "admin/layout.html" %}
 
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -25,21 +25,18 @@
             <tbody>
             {% for v in data['account'] %}
             <tr>
-                <td>{{ str(v['_id']) }}</td>
+                <td>{{ v['_id'] }}</td>
                 <td>{{ v['name'] }}</td>
                 <td>{{ v['createdAt'] }}</td>
                 <td>
-                    {%
-                    set url="/admin/account/delete/?_id="+str(v['_id'])
-                    %}
                     <a href="javascript:void(0)"
-                       onclick="if(confirm(`确定删除编号为{{ str(v['_id']) }}记录吗？`)){location.href='{{ url }}'}"
+                       onclick="if(confirm('确定删除编号为{{ v['_id'] }}记录吗？')){location.href='/admin/account/delete/?_id={{ v['_id'] }}'}"
                        class="text-danger">[删除]</a>
                 </td>
             </tr>
-            {% end %}
+            {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
-{% end %}
+{% endblock %}

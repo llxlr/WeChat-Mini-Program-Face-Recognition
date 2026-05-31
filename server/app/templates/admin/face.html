@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "admin/layout.html" %}
 
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -12,17 +12,6 @@
 <h5>人脸管理[列表]</h5>
 <div class="row">
     <div class="col-md-12 table-responsive">
-        <!--
-        unknown_image
-        known_image
-        name=
-        cate=
-        createdAt=
-        updatedAt=
-        ip=
-        addr=
-        headers=
-        -->
         <table class="table table-sm table-bordered">
             <thead>
             <tr>
@@ -39,34 +28,30 @@
             {% if data['face'] %}
             {% for v in data['face']['data'] %}
             <tr>
-                <td>{{ str(v['_id']) }}</td>
+                <td>{{ v['_id'] }}</td>
                 <td>{{ v['name'] }}</td>
                 <td>{{ v['ip'] }}</td>
                 <td>{{ v['addr'] }}</td>
                 <td>{{ v['createdAt'] }}</td>
                 <td>
-                    <!--0待审核，1已审核-->
                     {% if v['status'] == 0 %}
                     <span class="text-warning">待审核</span>
                     {% else %}
                     <span class="text-success">已审核</span>
-                    {% end %}
+                    {% endif %}
                 </td>
                 <td>
-                    <a href="/admin/face/detail/?_id={{ str(v['_id'])}}" class="text-success">[查看]</a>
-                    {%
-                    set url='/admin/face/delete/?_id='+str(v['_id'])
-                    %}
+                    <a href="/admin/face/detail/?_id={{ v['_id'] }}" class="text-success">[查看]</a>
                     <a href="javascript:void(0)"
-                       onclick="if(confirm(`确认删除编号为{{ str(v['_id'])}}的记录吗？`)){location.href='{{ url }}'}"
+                       onclick="if(confirm('确认删除编号为{{ v['_id'] }}的记录吗？')){location.href='/admin/face/delete/?_id={{ v['_id'] }}'}"
                        class="text-danger">[删除]</a>
                 </td>
             </tr>
-            {% end %}
-            {% end %}
+            {% endfor %}
+            {% endif %}
             </tbody>
         </table>
-        {% if data['face'] %}{% module page(data['face']) %}{% end %}
+        {% if data['face'] %}{% with pagedata=data['face'] %}{% include 'ui/page.html' %}{% endwith %}{% endif %}
     </div>
 </div>
-{% end %}
+{% endblock %}

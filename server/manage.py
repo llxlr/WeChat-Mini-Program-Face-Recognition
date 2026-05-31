@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
-from app import create_server
+"""FastAPI 人脸识别小助手 - 入口文件"""
+import uvicorn
 
 if __name__ == "__main__":
-    create_server()
+    uvicorn.run(
+        'app:create_app',
+        host='0.0.0.0',
+        port=8003,
+        reload=True,
+        factory=True,
+    )

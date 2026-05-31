@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "admin/layout.html" %}
 
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -18,7 +18,6 @@
                 <form id="form-data">
                     <div class="form-group">
                         <label for="input_name">账号名称：</label>
-                        {% raw xsrf_form_html() %}
                         <input class="form-control"
                                id="input_name"
                                type="text"
@@ -47,10 +46,10 @@
         </div>
     </div>
 </div>
-{% end %}
+{% endblock %}
 
 {% block foot %}
-<script src="{{ static_url('js/request.js') }}"></script>
+<script src="{{ url_for('static', path='js/request.js') }}"></script>
 <script>
     $(document).ready(function () {
         request(
@@ -60,4 +59,4 @@
         )
     });
 </script>
-{% end %}
+{% endblock %}
